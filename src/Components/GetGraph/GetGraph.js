@@ -1,9 +1,6 @@
 import React from "react";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-// It gets the graph:
-//  - it's based on MAX temp
-//  - eah 3 hrs for the next 24 hrs
 class GetGraph extends React.Component {
   render() {
     return (

@@ -24,7 +24,6 @@ class App extends Component {
     this.search = this.search.bind(this);
   }
 
-  //Update today data as sync mode
   updateTodayState = data => {
     this.setState(
       {
@@ -43,7 +42,6 @@ class App extends Component {
     );
   };
 
-  //Update weekly data as sync mode
   updateWeeklyState = data => {
     this.setState(
       {
@@ -54,7 +52,6 @@ class App extends Component {
     );
   };
 
-  //Search the weather based on the city
   search(term) {
     //Get today data
     weatherApi.getTodayData(term).then(data => this.updateTodayState(data));
@@ -74,7 +71,6 @@ class App extends Component {
     );
   }
 
-  //Identify if there is data to display
   displayResult() {
     if ((typeof this.state.city === "undefined") | (this.state.city === "")) {
       return false;

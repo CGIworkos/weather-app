@@ -1,13 +1,9 @@
 const API_KEY = "9d214c2f2ee09765a9260d75105b7e60";
 const API_URL_CURRENT = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric`;
 const API_URL_3HOURS = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&units=metric`;
-// It calls the API from openweathermap
 
-// Get the TODAY data
 const weatherApi = {
   getTodayData(city) {
-    //Get the CURRENT data
-    //console.log(API_URL_CURRENT + "&q=" + city);
     return fetch(API_URL_CURRENT + "&q=" + city)
       .then(response => {
         return response.json();
@@ -27,9 +23,7 @@ const weatherApi = {
       });
   },
 
-  //Get the 3 hours data (forecast). The API sends 40 items on this array
   get3HoursData(city) {
-    //console.log(API_URL_3HOURS + "&q=" + city);
     return fetch(API_URL_3HOURS + "&q=" + city)
       .then(response => {
         return response.json();
@@ -49,15 +43,11 @@ const weatherApi = {
       });
   },
 
-  //Get the forecast for the next 5 days
-  //Since the free api does not have a daily element.
-  //This routine will parse the 3hrs forecast to pick the next 5 days.
-  // and it finds the min and max temperature
   getWeeklyData(forecastWeekly) {
-    var uniqueDay = [];
+    let uniqueDay = [];
 
     forecastWeekly.map(element => {
-      var isDuplicated = uniqueDay.hasOwnProperty(element.weekday);
+      let isDuplicated = uniqueDay.hasOwnProperty(element.weekday);
       if (isDuplicated) {
         if (element.min < uniqueDay[element.weekday].min) {
           uniqueDay[element.weekday].min = element.min;
