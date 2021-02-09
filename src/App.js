@@ -53,9 +53,7 @@ class App extends Component {
   };
 
   search(term) {
-    //Get today data
     weatherApi.getTodayData(term).then(data => this.updateTodayState(data));
-    //Show the forecast for the next 24 hours, each 3 hours
     weatherApi.get3HoursData(term).then(data => this.updateWeeklyState(data));
   }
 
